@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
 	"strings"
 )
 
@@ -25,7 +26,8 @@ func httpHandler(w http.ResponseWriter, r *http.Request) {
 			http.NotFound(w, r)
 			return
 		}
-		io.WriteString(w, realIP(r))
+		hostname,_ :=  os.Hostname()
+		io.WriteString(w, hostname+realIP(r))
 	default:
 		http.NotFound(w, r)
 	}

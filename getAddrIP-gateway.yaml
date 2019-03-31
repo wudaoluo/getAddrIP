@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: getaddrip-gateway
+  name: getaddr-gateway
 spec:
   selector:
     istio: ingressgateway # use istio default controller
@@ -16,15 +16,15 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: getaddrip
+  name: getaddr
 spec:
   hosts:
   - "getaddr.carlo.ltd"
   gateways:
-  - getaddrip-gateway
+  - getaddr-gateway
   http:
     route:
     - destination:
-        host: getaddrip
+        host: getaddr
         port:
           number: 80
