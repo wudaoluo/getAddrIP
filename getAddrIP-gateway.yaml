@@ -23,8 +23,13 @@ spec:
   gateways:
   - getaddr-gateway
   http:
-    route:
-    - destination:
-        host: getaddr
-        port:
-          number: 80
+    - match:
+        - uri:
+            exact: /host
+        - uri:
+            exact: /
+      route:
+        - destination:
+            host: getaddr
+            port:
+              number: 80

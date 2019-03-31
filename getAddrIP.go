@@ -27,7 +27,7 @@ func httpHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		hostname,_ :=  os.Hostname()
-		io.WriteString(w, hostname+realIP(r))
+		io.WriteString(w, hostname+":"+realIP(r))
 	default:
 		http.NotFound(w, r)
 	}
